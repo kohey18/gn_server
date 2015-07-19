@@ -4,13 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <title>HTTP Live Streaming Test</title>
+    <link rel='stylesheet' href='/components/bootstrap/dist/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/components/bootstrap/dist/css/bootstrap-theme.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <header>
-      <h1>HTTP Live Streaming Test</h1>
-    </header>
-    <div>
-      <video width="500" height="500" src="./videos/stream/stream.m3u8" preload="none" onclick="this.play()" controls />
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="live">
+        <% for(var i=0; i<lives.length; i++) {%>
+           <video src=<%= lives[i]["file"]%> preload="none" onclick="this.play()" controls />
+        <% } %>
+      </div>
     </div>
   </body>
 </html>

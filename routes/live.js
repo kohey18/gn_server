@@ -1,18 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var Schema = new Schema({
-    file      :String,
-    thumbnail : String,
-    is_live : Boolean,
-    createdAt      : { type: Date, default: Date.now }
-});
-
-var Live = mongoose.model('Live', Schema);
+var mongoose = require('mongoose')
+var mongo = require('../lib/mongo');
 
 router.get('/', function(req, res, next) {
+    var Live = mongoose.model('Live');
     Live.find({}, function(err, results) {
         res.json({result: results});
     });
@@ -20,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/new', function(req, res, next) {
-    var live = new Live();
+    var live = mongo.Live();
     var body = req.body;
 
     live.file = body.file;

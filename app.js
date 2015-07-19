@@ -9,12 +9,11 @@ var routes = require('./routes/index');
 var live = require('./routes/live');
 
 var app = express();
-
 // database
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/streaming');
-
+var models = require('./lib/mongo')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
